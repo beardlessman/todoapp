@@ -49,7 +49,10 @@ Todo.prototype.bindEvents = function(){
 
 	cmp._newTodo.on('keyup', cmp.create.bind(this));
 	cmp._todoList
-		.on('click', '.delete', cmp.delete.bind(this));
+		.on('click', '.delete', cmp.delete.bind(this))
+		.on('click', '.edit', cmp.edit.bind(this))
+		.on('keyup', '.editing', cmp.editKeyup.bind(this))
+		.on('focusout', '.editing', cmp.update.bind(this));
 };
 Todo.prototype.create = function(e) {
 	var cmp = this,
@@ -93,8 +96,34 @@ Todo.prototype.getIndexFromEl = function(el) {
 Todo.prototype.delete = function(e){
 	var cmp = this;
 
-	console.log('delete' + e.target);
-
 	cmp.todos.splice(cmp.getIndexFromEl(e.target), 1);
 	cmp.render();
 };
+Todo.prototype.edit = function(e){
+	var cmp = this,
+		input = $(e.target).closest('li').find('input');
+
+	input.removeAttr('disabled').addClass('editing').focus();
+};
+Todo.prototype.editKeyup = function(e){
+	var cmp = this;
+
+	if (e.which === cmp.ENTER_KEY) {
+		e.target.blur();
+	}
+};
+Todo.prototype.update = function(e){
+	var cmp = this,
+		el = e.target,
+		$el = $(el),
+		val = $el.val().trim();
+
+	if (!val) {
+		cmp.delete(e);
+		return;
+	}
+
+	cmp.todos[cmp.getIndexFromEl(el)].title = val;
+
+	cmp.render();
+}
