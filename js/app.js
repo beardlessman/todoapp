@@ -51,6 +51,7 @@ Todo.prototype.bindEvents = function(){
 	cmp._todoList
 		.on('change', '.toggle', cmp.toggle.bind(this))
 		.on('click', '.delete', cmp.delete.bind(this))
+		.on('dblclick', '.todo-item', cmp.edit.bind(this))
 		.on('click', '.edit', cmp.edit.bind(this))
 		.on('keyup', '.editing', cmp.editKeyup.bind(this))
 		.on('focusout', '.editing', cmp.update.bind(this));
