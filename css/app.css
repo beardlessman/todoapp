@@ -1,0 +1,161 @@
+body {
+	display: flex;
+	 -webkit-justify-content: center; /* Safari */
+	justify-content: center;
+	-webkit-align-items: center; /* Safari */
+	align-items: center;
+
+	font-family: sans-serif;
+	font-size: 24px;
+	color: #1B2432;
+	background-color: #EFF0F1;
+	padding: 10px;
+}
+h1 {
+	margin-top: 0;
+}
+input {
+	height: 39px;
+	font-size: 20px;
+	line-height: 37px;
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+	border: none;
+	outline: none;
+	width: 100%;
+}
+
+.todo {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px 0px;
+	background-color: #fff;
+	padding: 20px;
+	margin-top: 50px;
+	width: 100%;
+	max-width: 600px;
+}
+.todo-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.todo-list__item {
+	box-sizing: border-box;
+	height: 41px;
+	border-bottom: 1px solid rgb(27, 36, 50);
+	display: flex;
+	-webkit-align-items: center; /* Safari */
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+}
+.todo-list__item:last-child {
+	border-bottom: 1px solid #fff;
+}
+.todo__new {
+	width: 100%;
+	border-bottom: 1px solid rgb(27, 36, 50);
+	padding-left: 50px;
+}
+.todo-item {
+	padding: 0 100px 0 50px;
+}
+
+.delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	color: #fff;
+	border: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+.delete:after {
+	display: block;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background-image: url('../img/delete.svg');
+	background-size: contain;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	opacity: 0.2;
+	transition: opacity 0.2s ease;
+}
+.delete:hover:after {
+	opacity: 1;
+}
+.edit {
+	position: absolute;
+	top: 0;
+	right: 40px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	color: #fff;
+	border: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+.edit:after {
+	display: block;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background-image: url('../img/edit.svg');
+	background-size: contain;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	opacity: 0.2;
+	transition: opacity 0.2s ease;
+}
+.edit:hover:after {
+	opacity: 1;
+}
+.toggle {
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: -50px;
+	cursor: pointer;
+}
+.toggle:before {
+	display: block;
+	content: '';
+	width: 20px;
+	height: 20px;
+	border: 1px solid grey;
+	border-radius: 50%;
+	position: absolute;
+	top: 10px;
+	left:60px;
+
+}
+.toggle:after {
+	display: block;
+	content: '';
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 12px;
+	left:65px;
+	background-image: url('../img/check.svg');
+	background-size: contain;
+	transition: opacity 0.2s ease;
+	opacity: 0;
+}
+.toggle:checked:after {
+	opacity: 1;
+}

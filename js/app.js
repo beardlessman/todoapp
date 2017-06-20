@@ -102,7 +102,7 @@ Todo.prototype.delete = function(e){
 };
 Todo.prototype.edit = function(e){
 	var cmp = this,
-		input = $(e.target).closest('li').find('input.todo');
+		input = $(e.target).closest('li').find('input.todo-item');
 
 	input.removeAttr('disabled').addClass('editing').focus();
 };

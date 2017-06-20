@@ -3,29 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Todo app</title>
+		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
-		<section class="j-todo">
-			<header id="header">
+		<section class="j-todo todo">
+			<header class="todo__header">
 				<h1>Todo list</h1>
-				<label for="new-todo">new todo</label>
-				<input id="new-todo" placeholder="write here your todo and press 'Enter'" autofocus>
+				<!-- <label for="new-todo">new todo</label> -->
+				<input id="new-todo" class="todo__new" placeholder="write here your todo and press 'Enter'" autofocus>
 			</header>
-			<section id="main">
-				<ul id="todo-list"></ul>
+			<section class="todo__body">
+				<ul id="todo-list" class="todo-list"></ul>
 			</section>
 		</section>
 		
 		<script id="todo-template" type="text/x-handlebars-template">
 			{{#this}}
-			<li data-id="{{id}}">
-				<div class="view">
+			<li data-id="{{id}}" class="todo-list__item">
 					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-					<input class="todo" type="text" disabled value="{{title}}">
-					<button class="edit">Edit</button>
-					<button class="delete">Delete</button>
-				</div>
+					<input class="todo-item" type="text" disabled value="{{title}}">
+					<button class="edit" alt="Edit">Edit</button>
+					<button class="delete" alt="Delete">Delete</button>
 			</li>
 			{{/this}}
 		</script>
