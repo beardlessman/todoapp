@@ -64,7 +64,7 @@ Todo.prototype.create = function(e) {
 		return;
 	}
 
-	cmp.todos.push({
+	cmp.todos.unshift({
 		id: storage.id(),
 		title: val,
 		completed: false
