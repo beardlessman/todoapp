@@ -21,7 +21,8 @@
 			{{#this}}
 			<li data-id="{{id}}">
 				<div class="view">
-					<input type="text" disabled value="{{title}}">
+					<input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+					<input class="todo" type="text" disabled value="{{title}}">
 					<button class="edit">Edit</button>
 					<button class="delete">Delete</button>
 				</div>

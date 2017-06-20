@@ -49,6 +49,7 @@ Todo.prototype.bindEvents = function(){
 
 	cmp._newTodo.on('keyup', cmp.create.bind(this));
 	cmp._todoList
+		.on('change', '.toggle', cmp.toggle.bind(this))
 		.on('click', '.delete', cmp.delete.bind(this))
 		.on('click', '.edit', cmp.edit.bind(this))
 		.on('keyup', '.editing', cmp.editKeyup.bind(this))
@@ -101,7 +102,7 @@ Todo.prototype.delete = function(e){
 };
 Todo.prototype.edit = function(e){
 	var cmp = this,
-		input = $(e.target).closest('li').find('input');
+		input = $(e.target).closest('li').find('input.todo');
 
 	input.removeAttr('disabled').addClass('editing').focus();
 };
@@ -126,4 +127,12 @@ Todo.prototype.update = function(e){
 	cmp.todos[cmp.getIndexFromEl(el)].title = val;
 
 	cmp.render();
-}
+};
+Todo.prototype.toggle = function(e){
+	var cmp = this,
+		i = cmp.getIndexFromEl(e.target);
+
+	cmp.todos[i].completed = !cmp.todos[i].completed;
+	cmp.render();
+
+};
