@@ -15,7 +15,7 @@ h1 {
 	margin-top: 0;
 }
 input {
-	height: 39px;
+	height: 40px;
 	font-size: 20px;
 	line-height: 37px;
 	display: inline-block;
@@ -55,10 +55,14 @@ input {
 .todo-list__item:last-child {
 	border-bottom: 1px solid #fff;
 }
+.todo__header {
+	position: relative;
+}
 .todo__new {
 	width: 100%;
 	border-bottom: 1px solid rgb(27, 36, 50);
 	padding-left: 50px;
+	padding-right: 90px;
 }
 .todo-item {
 	padding: 0 100px 0 50px;
@@ -91,6 +95,35 @@ input {
 	transition: opacity 0.2s ease;
 }
 .delete:hover:after {
+	opacity: 1;
+}
+.push {
+	position: absolute;
+	bottom: 1px;
+	right: 0px;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	color: #fff;
+	border: none;
+	overflow: hidden;
+	cursor: pointer;
+}
+.push:after {
+	display: block;
+	content: '';
+	width: 20px;
+	height: 20px;
+	background-image: url('../img/push.svg');
+	background-size: contain;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	opacity: 0.8;
+	transition: opacity 0.2s ease;
+}
+.push:hover:after {
 	opacity: 1;
 }
 .edit {

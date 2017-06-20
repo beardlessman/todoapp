@@ -35,6 +35,7 @@ function Todo (container) {
 	this.todos = storage.store('todos');
 	this._newTodo = $('#new-todo');
 	this._todoList = $('#todo-list');
+	this._todoPush = $('#todo-push');
 	this.todoTemplate = Handlebars.compile($('#todo-template').html());
 	this.init();
 }
@@ -48,6 +49,9 @@ Todo.prototype.bindEvents = function(){
 	var cmp = this;
 
 	cmp._newTodo.on('keyup', cmp.create.bind(this));
+	cmp._todoPush.on('click', function(){
+		cmp.createBtn();
+	});
 	cmp._todoList
 		.on('change', '.toggle', cmp.toggle.bind(this))
 		.on('click', '.delete', cmp.delete.bind(this))
@@ -75,6 +79,26 @@ Todo.prototype.create = function(e) {
 
 	cmp.render();
 };
+Todo.prototype.createBtn = function(e) {
+	var cmp = this,
+		input =cmp._newTodo,
+		val = input.val().trim();
+
+	if (!val) {
+		return;
+	}
+
+	cmp.todos.unshift({
+		id: storage.id(),
+		title: val,
+		completed: false
+	});
+
+	input.val('');
+
+	cmp.render();
+};
+
 Todo.prototype.render = function(){
 	var cmp = this,
 		todos = cmp.todos;
