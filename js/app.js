@@ -48,6 +48,8 @@ Todo.prototype.bindEvents = function(){
 	var cmp = this;
 
 	cmp._newTodo.on('keyup', cmp.create.bind(this));
+	cmp._todoList
+		.on('click', '.delete', cmp.delete.bind(this));
 };
 Todo.prototype.create = function(e) {
 	var cmp = this,
@@ -75,4 +77,24 @@ Todo.prototype.render = function(){
 	cmp._todoList.html(cmp.todoTemplate(todos));
 	cmp._newTodo.focus();
 	storage.store('todos', cmp.todos);
+};
+Todo.prototype.getIndexFromEl = function(el) {
+	var cmp = this,
+		id = $(el).closest('li').data('id'),
+		todos = cmp.todos,
+		i = todos.length;
+
+	while (i--) {
+		if (todos[i].id === id) {
+			return i;
+		}
+	}
+};
+Todo.prototype.delete = function(e){
+	var cmp = this;
+
+	console.log('delete' + e.target);
+
+	cmp.todos.splice(cmp.getIndexFromEl(e.target), 1);
+	cmp.render();
 };
