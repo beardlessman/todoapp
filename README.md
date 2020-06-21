@@ -1,3 +1,3 @@
 # todoapp
 
-# https://dmungalov.github.io/todoapp/
+https://beardlessman.github.io/todoapp/index.html
